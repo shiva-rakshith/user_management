@@ -6,7 +6,7 @@ import org.scalatest.{BeforeAndAfterAll, Matchers, WordSpecLike}
 import java.text.SimpleDateFormat
 import java.util.{Calendar, TimeZone}
 
-class TestUserActor extends TestKit(ActorSystem("UserActorTests")) with ImplicitSender with DefaultTimeout with WordSpecLike with BeforeAndAfterAll with Matchers{
+class TestTimeActor extends TestKit(ActorSystem("UserActorTests")) with ImplicitSender with DefaultTimeout with WordSpecLike with BeforeAndAfterAll with Matchers{
    def getTime(timezone : String): String ={
      val cal = Calendar.getInstance()
      TimeZone.setDefault(TimeZone.getTimeZone(timezone))
