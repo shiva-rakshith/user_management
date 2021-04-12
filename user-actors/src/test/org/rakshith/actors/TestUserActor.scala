@@ -18,7 +18,7 @@ class TestUserActor extends TestKit(ActorSystem("UserActorTests")) with Implicit
    }
   "Sending a timezone message to UserActor" should {
     "display the IST time when timezone is IST" in {
-      val testActor = TestActorRef[UserActor]
+      val testActor = TestActorRef[TimeActor]
       testActor ! getTimeZone("IST")
       val time = getTime("IST")
       expectMsg("{"+ "\""+"Current Time"+"\"" +":"+ "{"+ "\""+"time"+"\""+":"+"\""+s"$time"+"\""+"," +"\""+"timezone"+"\""+":"+ "\""+"IST"+"\""+"}}"
@@ -26,7 +26,7 @@ class TestUserActor extends TestKit(ActorSystem("UserActorTests")) with Implicit
     }
 
     "display the EST time when timezone is EST" in {
-      val testActor = TestActorRef[UserActor]
+      val testActor = TestActorRef[TimeActor]
       testActor ! getTimeZone("EST")
       val time = getTime("EST")
       expectMsg("{"+ "\""+"Current Time"+"\"" +":"+ "{"+ "\""+"time"+"\""+":"+"\""+s"$time"+"\""+"," +"\""+"timezone"+"\""+":"+ "\""+"EST"+"\""+"}}"
@@ -34,7 +34,7 @@ class TestUserActor extends TestKit(ActorSystem("UserActorTests")) with Implicit
     }
 
     "display the GMT time when timezone is GMT" in {
-      val testActor = TestActorRef[UserActor]
+      val testActor = TestActorRef[TimeActor]
       testActor ! getTimeZone("GMT")
       val time = getTime("GMT")
       expectMsg("{"+ "\""+"Current Time"+"\"" +":"+ "{"+ "\""+"time"+"\""+":"+"\""+s"$time"+"\""+"," +"\""+"timezone"+"\""+":"+ "\""+"GMT"+"\""+"}}"
@@ -42,7 +42,7 @@ class TestUserActor extends TestKit(ActorSystem("UserActorTests")) with Implicit
     }
 
     "display the invalid timezone when timezone is not IST or EST or GMT" in {
-      val testActor = TestActorRef[UserActor]
+      val testActor = TestActorRef[TimeActor]
       testActor ! getTimeZone("UTC")
       expectMsg("Invalid Timezone")
     }

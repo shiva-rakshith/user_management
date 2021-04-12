@@ -1,11 +1,12 @@
 package modules
 
 import com.google.inject.AbstractModule
+import org.rakshith.actors.{TimeActor}
 import play.libs.akka.AkkaGuiceSupport
-import org.rakshith.actors.UserActor
 
 class ActorModule extends AbstractModule with AkkaGuiceSupport{
   override def configure(): Unit ={
-    bindActor(classOf[UserActor], "userActor")
+    bindActor(classOf[TimeActor], "timeActor")
+   // bindActor(classOf[UserActor],"userActor")
   }
 }
