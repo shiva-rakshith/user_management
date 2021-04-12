@@ -22,7 +22,7 @@ class TimeActor extends Actor{
           case getTimeZone(timeZone) if timeZone=="GMT" =>
             val time = Json.stringify(Json.toJson(currentTime(getTimeFromTimeZone("GMT"),timeZone)))
             sender() ! jsonConversion(time)
-          case getTimeZone(timeZone) if timeZone=="All" =>
+          case getTimeZone(timeZone) if timeZone=="ALL" =>
             val timeZones = Array("IST","EST","GMT")
             val allTime = timeZones.map(a => Json.stringify(Json.toJson(currentTime(getTimeFromTimeZone(a),a))))
             sender() ! jsonConversion(allTime.mkString(","))

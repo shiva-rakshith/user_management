@@ -19,7 +19,7 @@ class HomeController @Inject()(@Named("timeActor") timeActor: ActorRef, cc: Cont
 
   def getTime() : Action[AnyContent] = Action.async { implicit request =>
     val body = request.body.asJson.get
-    val timezone: String = (body \ "timezone").as[String]
+    val timezone: String = (body \ "timezone").asOpt[String].getOrElse("ALL")
     val result : Future[String] = ask(timeActor,getTimeZone(timezone))(5 second).mapTo[String]
     result.map(response => Ok(response).withHeaders(CONTENT_TYPE -> "application/json"))
   }

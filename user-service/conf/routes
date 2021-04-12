@@ -2,5 +2,12 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+#timezone APIs
 GET     /home                     @controllers.HomeController.home
-POST    /getTime                  @controllers.HomeController.getTime(timeZone: String ?= "All")
+POST    /getTime                  @controllers.HomeController.getTime
+
+#CRUD APIs
+POST    /createUser               @controllers.UserController.createUser
+GET     /readUser                 @controllers.UserController.readUser
+PATCH   /updateUser               @controllers.UserController.updateUser
+DELETE  /deleteUser               @controllers.UserController.deleteUser

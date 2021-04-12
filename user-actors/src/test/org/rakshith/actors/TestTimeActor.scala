@@ -16,7 +16,7 @@ class TestTimeActor extends TestKit(ActorSystem("UserActorTests")) with Implicit
      val dateFormat = formatter.format(currentTime)
      dateFormat
    }
-  "Sending a timezone message to UserActor" should {
+  "Sending a timezone message to TimeActor" should {
     "display the IST time when timezone is IST" in {
       val testActor = TestActorRef[TimeActor]
       testActor ! getTimeZone("IST")
